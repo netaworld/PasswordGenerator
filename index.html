@@ -28,7 +28,8 @@
               </div>
 
         <div class="card-body">
-            <textarea rows="5" cols="135">Your Secure Password</textarea>
+            <textarea rows="5" cols="95">Your Secure Password</textarea>
+           
 
         </div>
         <div class="card-footer">
@@ -51,13 +52,21 @@ var question3= confirm("Do you want numbers in it as well?");
 var question4= confirm("Do you want lower case letters in your password too? ");
 var question5= confirm("Do you want upper case letters in your passsword too?");
 
-// Creates an array of lower case alphabet.
-var computerChoices = ["a", "b", "c", "d", "e", "f","g", "h", "i","j", "k", "l", "m", "n", "o","p","q", "r", "s", "t", "u", "v", "w", "x", "y", "x"];
-var computerChoices = ["1", "2", "3", "4", "5", "6", "7","8","9"]
-var computerChoices = [ "!", "@", "#", "$", "%", "^", "&","*","?"]
+// Entire Questions
+var entireQuestion = [question1, question2, question3, question4, question5];
 
 
-    
+
+// Creates an array of lower and upper case alphabet, numbers and charecters
+var computerChoices1 = ["a", "b", "c", "d", "e", "f","g", "h", "i","j", "k", "l", "m", "n", "o","p","q", "r", "s", "t", "u", "v", "w", "x", "y", "x"];
+var computerChoices2 = ["1", "2", "3", "4", "5", "6", "7","8","9"]
+var computerChoices3 = [ "!", "@", "#", "$", "%", "^", "&","*","?"]
+var computerChoices4 = [ "A", "B","C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "X"];
+
+for (var i = 0; i < 100; i++) {
+        // Randomly chooses a choice from the options array. This is the Computer's choise.
+        var computerChoise = computerChoices[Math.floor(Math.random() * computerChoices.length)];   
+
 
 
 
