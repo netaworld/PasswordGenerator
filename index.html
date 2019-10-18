@@ -18,71 +18,120 @@
 
     <div class="wrapper">
 
-    
-    <h1>Password Generator</h1>
-    <div class="card">
+
+        <h1>Password Generator</h1>
+        <div class="card">
             <div class="card-header">
                 <h2>Generate a Password</h2>
 
-    
-              </div>
 
-        <div class="card-body">
-            <textarea rows="5" cols="95">Your Secure Password</textarea>
-           
+            </div>
 
-        </div>
-        <div class="card-footer">
+            <div class="card-body">
+                <textarea id="password" rows="5" cols="95">Your Secure Password</textarea>
+
+
+            </div>
+            <div class="card-footer">
                 <button type="button" class="btn btn-danger">Generate Password</button>
                 <button type="button" class="btn btn-secondary">Copy to Clipboard</button>
+            </div>
+
         </div>
-
-    </div>
     </div>
 
-<script type="text/javascript">
+    <script type="text/javascript">
+        // Creates an array of lower and upper case alphabet, numbers and charecters
+        var computerChoices0 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "x"];
+        var computerChoices1 = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+        var computerChoices2 = ["!", "@", "#", "$", "%", "^", "&", "*", "?"]
+        var computerChoices3 = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "X"];
+
+        // Here we ask the user about lenght of their passowrd //
+        // row of questions//
+        var passwordLength = prompt("How long do you want your password? Please,type in numbers only.");
+
+        // && both HAVE to be true
+        // || only ONE has to be true
+
+        while (passwordLength < 8 || passwordLength > 128) {
+            alert(" please pick a number between 8 and 128")
+            passwordLength = prompt("How long do you want your password? Please,type in numbers only.");
+        }
+
+        var question0 = confirm("Do you want lower case letters in your password too? ");
+        var question1 = confirm("Do you want numbers in it as well?");
+        var question2 = confirm("Do you want special charecters in your password?");
+        var question3 = confirm("Do you want upper case letters in your passsword too?");
+
+        // Entire Questions
+        var formSelection = [];
+
+        if (question0 === true) {
+            formSelection.push(computerChoices0)
+        }
+        if (question1 === true) {
+            formSelection.push(computerChoices1)
+        }
+        if (question2 === true) {
+            formSelection.push(computerChoices2)
+        }
+        if (question3 === true) {
+            formSelection.push(computerChoices3)
+        }
+
+        console.log(formSelection)
 
 
-// Here we ask the user about lenght of their passowrd //
-// row of questions//
-var question1= prompt("How long do you want your password? Please,type in numbers only.");
+        //pick a random array to pick a random character from
+        function randomArray(parentArray) {
+            var childRandomArray = Math.floor(Math.random() * parentArray.length);
+            return parentArray[childRandomArray]
+        }
 
-var question2= confirm("Do you want special charecters in your password?");
-var question3= confirm("Do you want numbers in it as well?");
-var question4= confirm("Do you want lower case letters in your password too? ");
-var question5= confirm("Do you want upper case letters in your passsword too?");
-
-// Entire Questions
-var entireQuestion = [question1, question2, question3, question4, question5];
-
-
-
-// Creates an array of lower and upper case alphabet, numbers and charecters
-var computerChoices1 = ["a", "b", "c", "d", "e", "f","g", "h", "i","j", "k", "l", "m", "n", "o","p","q", "r", "s", "t", "u", "v", "w", "x", "y", "x"];
-var computerChoices2 = ["1", "2", "3", "4", "5", "6", "7","8","9"]
-var computerChoices3 = [ "!", "@", "#", "$", "%", "^", "&","*","?"]
-var computerChoices4 = [ "A", "B","C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "X"];
-
-for (var i = 0; i < 100; i++) {
-        // Randomly chooses a choice from the options array. This is the Computer's choise.
-        var computerChoise = computerChoices[Math.floor(Math.random() * computerChoices.length)];   
+        //pick a random character from the randomly selected array 
+        function randomCharacter(array) {
+            var randomIndex = Math.floor(Math.random() * array.length);
+            return array[randomIndex]
+        }
 
 
+        var randomCharacterArray = randomArray(formSelection)
+        
+        console.log(randomCharacterArray)
+
+        var randomCharacterSelection = randomCharacter(randomCharacterArray)
+
+        console.log(randomCharacterSelection)
+
+        //create a variable that will represent our randomly generated password
+
+        // loop through desired length (done)
+        for (var i = 0; i < passwordLength; i++) {
+            //create a newArray
+
+            //pick a random character from a random array
+
+            //push the selected random chacter to a newArray 
+
+            //join the array into a string
+
+            //assign the joined array to the variable that represents our randomly generated password
+            
+        }
+
+        //using DOM manipulation, assign the randomly generated password to #password in the HTML 
+        // https://codepen.io/pen/?&editable=true
 
 
 
-</script>
+
+
+
  
 
 
-
-
-
-
-
-
-
-
+    </script>
 </body>
 
 </html>
