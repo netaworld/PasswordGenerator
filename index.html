@@ -30,18 +30,18 @@
             </div>
 
             <div class="container">
-                
+
                 <div class="row">
 
                     <div class="col-lg-8 col-sm-12 mx-auto">
-                       <input type ="text" id="display"> 
+                        <input type="text" id="display">
 
-                    <br>
-                    
+                        <br>
+
 
                     </div>
                 </div>
-                    
+
             </div>
             <div class="card-footer">
                 <button id="redButton" type="button" class="btn btn-danger">Generate Password</button>
@@ -53,48 +53,59 @@
 
     <script type="text/javascript">
         // Creates an array of lower and upper case alphabet, numbers and charecters
+        var formSelection = [];
         var computerChoices0 = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "x"];
         var computerChoices1 = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
         var computerChoices2 = ["!", "@", "#", "$", "%", "^", "&", "*", "?"]
         var computerChoices3 = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "X"];
-
-        // Here we ask the user about lenght of their passowrd //
-        // row of questions//
-        var passwordLength = prompt("How long do you want your password? Please,type in numbers only.");
-
-
+        var passwordLength;
         var generatePassword = "";
-        // && both HAVE to be true
-        // || only ONE has to be true
+        var question0;
+        var question1;
+        var question2;
+        var question3;
+        
+        //asks the user what types of characters they want - and the length of the password
+        function promptUser() {
+            //array of characters the user wants to use in the password
+            formSelection = [];
+            generatePassword = "";
 
-        while (passwordLength < 8 || passwordLength > 128) {
-            alert(" please pick a number between 8 and 128")
+            // Here we ask the user about lenght of their password
+            // row of questions
             passwordLength = prompt("How long do you want your password? Please,type in numbers only.");
-        }
 
-        var question0 = confirm("Do you want lower case letters in your password too? ");
-        var question1 = confirm("Do you want numbers in it as well?");
-        var question2 = confirm("Do you want special charecters in your password?");
-        var question3 = confirm("Do you want upper case letters in your passsword too?");
+            // && both HAVE to be true
+            // || only ONE has to be true
+            // determines the length of the password is valid and between 8 and 128 
+            while (passwordLength < 8 || passwordLength > 128) {
+                alert(" please pick a number between 8 and 128")
+                passwordLength = prompt("How long do you want your password? Please,type in numbers only.");
+            }
 
-        // Entire Questions
-        var formSelection = [];
+            //prompts user with questions about their password
+            question0 = confirm("Do you want lower case letters in your password too? ");
+            question1 = confirm("Do you want numbers in it as well?");
+            question2 = confirm("Do you want special charecters in your password?");
+            question3 = confirm("Do you want upper case letters in your passsword too?");
 
-        if (question0 === true) {
-            formSelection.push(computerChoices0)
-        }
-        if (question1 === true) {
-            formSelection.push(computerChoices1)
-        }
-        if (question2 === true) {
-            formSelection.push(computerChoices2)
-        }
-        if (question3 === true) {
-            formSelection.push(computerChoices3)
-        }
+            //determines user choices for characters, and adds them to the form selection array
+            if (question0 === true) {
+                formSelection.push(computerChoices0)
+            }
+            if (question1 === true) {
+                formSelection.push(computerChoices1)
+            }
+            if (question2 === true) {
+                formSelection.push(computerChoices2)
+            }
+            if (question3 === true) {
+                formSelection.push(computerChoices3)
+            }
 
-        console.log(formSelection)
-
+            //console logs the form selection array
+            console.log(formSelection)
+        }
 
         //pick a random array to pick a random character from
         function randomArray(parentArray) {
@@ -108,49 +119,49 @@
             return array[randomIndex]
         }
 
+        //starts whole process over again - including user prompts
+        function randomNewPassword() {
+            promptUser();
+
+            //loop throughh the random array selector and random character selecter a number of times, based on the length of the password the user dictates
+            for (var i = 0; i < passwordLength; i++) {
+
+                var randomCharacterArray = randomArray(formSelection)
+
+                // console.log(randomCharacterArray)
+
+                var randomCharacterSelection = randomCharacter(randomCharacterArray)
+
+                // console.log(randomCharacterSelection)
+
+                generatePassword += randomCharacterSelection
 
 
+            }
+            console.log(generatePassword)
+
+            document.getElementById("display").value = generatePassword;
 
 
-function randomNewPassword(){ 
-    generatePassword = ""
-        for (var i = 0; i < passwordLength; i++){
-    
-            var randomCharacterArray = randomArray(formSelection)
+        }
         
-       // console.log(randomCharacterArray)
+        randomNewPassword()
+        document.getElementById("display").value = generatePassword;
 
-        var randomCharacterSelection = randomCharacter(randomCharacterArray)
-
-//console.log(randomCharacterSelection)
-
-generatePassword +=randomCharacterSelection
+        document.getElementById("redButton").addEventListener("click", randomNewPassword);
 
 
-    }
-console.log(generatePassword)
+        document.getElementById("grayButton").addEventListener("click", copyPassword);
 
-document.getElementById("display").value = generatePassword;
-
-
-}
-randomNewPassword()
-document.getElementById("display").value = generatePassword;
-
-document.getElementById("redButton").addEventListener("click", randomNewPassword);
+        function copyPassword() {
+            var copyText = document.getElementById("display");
+            copyText.select();
+            document.execCommand("copy");
+            alert("Copied the text " + copyText.value)
+        }
 
 
-document.getElementById("grayButton").addEventListener("click", copyPassword);
 
-function copyPassword(){
- var copyText = document.getElementById("display");
- copyText.select();
- document.execCommand("copy");
- alert("Copied the text " + copyText.value)
-}
-    
-
- 
 
 
     </script>
