@@ -16,6 +16,8 @@
 
 <body>
 
+
+
     <div class="wrapper">
 
 
@@ -27,10 +29,19 @@
 
             </div>
 
-            <div class="card-body">
-                <textarea id="password" rows="5" cols="95">Your Secure Password</textarea>
+            <div class="container">
+                
+                <div class="row">
 
+                    <div class="col-lg-8 col-sm-12 mx-auto">
+                       <input type ="text" id="display"> 
 
+                    <br>
+                    
+
+                    </div>
+                </div>
+                    
             </div>
             <div class="card-footer">
                 <button type="button" class="btn btn-danger">Generate Password</button>
@@ -105,9 +116,23 @@
         console.log(randomCharacterSelection)
 
         //create a variable that will represent our randomly generated password
+//function generate(){
+
+//let complexity = document.getElementById("passwordLength").value;
+//let value = //alphabet,numbers and special characters needs to be here//
+
+//let password = "";
 
         // loop through desired length (done)
-        for (var i = 0; i < passwordLength; i++) {
+       // for (var i = 0; i < passwordLength; i++){
+// for(var i=o; i<= complexity; i++){
+ //    password= password +value.charAt(Math.floor(math.random() *Math.floor(value.length -1)));
+ //}
+//document.getElementById("display").value = password;
+
+
+
+
             //create a newArray
 
             //pick a random character from a random array
@@ -118,17 +143,26 @@
 
             //assign the joined array to the variable that represents our randomly generated password
             
-        }
+        //}
 
         //using DOM manipulation, assign the randomly generated password to #password in the HTML 
-        // https://codepen.io/pen/?&editable=true
 
 
 
 
+    
+// return randomCharacterArray[(randomCharacterSelection()).parentArray.length)] {
 
+//function to copy password to clipboard//
+//function copypassword(){
+//document.getElementById("display").select();
+//document.execCommand("Copy");
 
- 
+//alert("Password copied to clipboard!");
+
+//}
+
+ //<textarea id="password" rows="5" cols="95">Your Secure Password</textarea>
 
 
     </script>
