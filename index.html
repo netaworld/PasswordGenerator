@@ -44,8 +44,8 @@
                     
             </div>
             <div class="card-footer">
-                <button type="button" class="btn btn-danger">Generate Password</button>
-                <button type="button" class="btn btn-secondary">Copy to Clipboard</button>
+                <button id="redButton" type="button" class="btn btn-danger">Generate Password</button>
+                <button id="grayButton" type="button" class="btn btn-secondary">Copy to Clipboard</button>
             </div>
 
         </div>
@@ -110,9 +110,9 @@
 
 
 
- function createPassword(){
 
 
+function randomNewPassword(){
         for (var i = 0; i < passwordLength; i++){
     
             var randomCharacterArray = randomArray(formSelection)
@@ -128,12 +128,11 @@ generatePassword +=randomCharacterSelection
 
     }
 console.log(generatePassword)
- }
+}
+randomNewPassword()
+document.getElementById("display").value = generatePassword;
 
-
-
-
-
+document.getElementById("redButton").addEventListener("click", randomNewPassword);
 
 
     
